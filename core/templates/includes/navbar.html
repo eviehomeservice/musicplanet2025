@@ -1,0 +1,14 @@
+<nav class="navbar">
+    <ul>
+        <li><a href="{% url 'home' %}">首页</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'spirits' %}">音符精灵</a></li>
+            <li><a href="{% url 'record' %}">讲故事</a></li>
+            <li><a href="{% url 'collage' %}">声音拼贴</a></li>
+            <li><a href="{% url 'my_music' %}">我的音乐</a></li>
+            <li><a href="{% url 'logout' %}">退出</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">登录</a></li>
+        {% endif %}
+    </ul>
+</nav>

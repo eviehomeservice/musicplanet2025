@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+
+{% block title %}声音拼贴{% endblock %}
+
+{% block content %}
+<div class="collage-container">
+    <h2>声音拼贴创作</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="sound-upload">
+            <label>上传声音文件 (自动分配到前8个节拍):</label>
+            <input type="file" name="sounds" multiple accept="audio/*" id="sound-files">
+        </div>
+
+        <div class="timeline-grid">
+            <p class="grid-instruction">点击节拍格子可重新分配文件</p>
+            {% for i in "12345678" %}
+            <div class="beat-cell" data-beat="{{ forloop.counter0 }}">
+                <span>拍 {{ forloop.counter }}</span>
+                <div class="file-name"></div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="action-buttons">
+            <button type="button" id="preview-button" class="btn btn-play">▶ 播放拼贴</button>
+            <button type="button" id="reset-button" class="btn btn-reset">♻️ 重置</button>
+            <button type="submit" id="generate-button" class="btn btn-create">生成音乐</button>
+        </div>
+    </form>
+
+    <audio id="preview-audio" controls style="display:none; width:100%; margin-top:20px;"></audio>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js"></script>
+<script src="/static/js/collage.js"></script>
+{% endblock %}

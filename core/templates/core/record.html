@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js"></script>
+{% extends "core/base.html" %}
+
+{% block title %}录音故事{% endblock %}
+
+{% block content %}
+<div class="record-container">
+    <h2>录音故事创作</h2>
+    
+    <div class="recorder">
+        <button id="mic-settings" class="btn btn-settings">🎤 麦克风设置</button>
+        <button id="record-btn" class="btn btn-record">开始录音</button>
+        <button id="stop-btn" class="btn btn-stop" disabled>停止</button>
+        <button id="playback-btn" class="btn btn-play" disabled>▶ 试听</button>
+        <audio id="audio-playback" controls></audio>
+        <div id="mic-status" class="mic-status">麦克风未启用</div>
+    </div>
+    
+    <form method="post" enctype="multipart/form-data" id="audio-form">
+        {% csrf_token %}
+        <input type="file" name="audio" id="audio-file" accept="audio/*" hidden>
+        <button type="submit" class="btn btn-submit" disabled>生成音乐</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/recorder.js"></script>
+{% endblock %}

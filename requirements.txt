@@ -1,0 +1,5 @@
+Django>=4.0
+pydub
+python-dotenv
+whisper-timestamped
+ffmpeg-python

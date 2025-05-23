@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% block title %}欢迎来到音乐星球{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="welcome-message">
+        <h2>欢迎来到音乐星球！</h2>
+        <p>在这里，你可以创作属于自己的音乐故事</p>
+    </div>
+    
+    <div class="activity-buttons">
+        <a href="{% url 'spirits' %}" class="btn btn-spirits">音符精灵</a>
+        <a href="{% url 'record' %}" class="btn btn-record">讲故事</a>
+        <a href="{% url 'collage' %}" class="btn btn-collage">声音拼贴</a>
+        <a href="{% url 'my_music' %}" class="btn btn-mymusic">我的音乐</a>
+    </div>
+</div>
+{% endblock %}

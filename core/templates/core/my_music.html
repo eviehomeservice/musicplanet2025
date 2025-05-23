@@ -1,0 +1,28 @@
+{% extends "core/base.html" %}
+
+{% block title %}我的音乐{% endblock %}
+
+{% block content %}
+<div class="music-library">
+    <h2>我的音乐作品</h2>
+    
+    {% if musics %}
+    <ul class="music-list">
+        {% for music in musics %}
+        <li class="music-item">
+            <div class="music-info">
+        	    <h3>{{ music.title }}</h3>
+       	        <p>类型: {{ music.get_music_type_display }} | 创建于: {{ music.created_at|date:"Y-m-d H:i" }}</p>
+    	</div>
+    	<div class="music-controls">
+        	<audio controls src="{{ music.audio_file.url }}"></audio>
+        	<a href="{{ music.audio_file.url }}" download class="btn-download">↓ 下载</a>
+    	</div>
+	</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p class="no-music">你还没有创作任何音乐哦，快去试试吧！</p>
+    {% endif %}
+</div>
+{% endblock %}

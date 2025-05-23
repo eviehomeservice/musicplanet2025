@@ -1,0 +1,30 @@
+<!-- core/templates/core/spirits.html -->
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js"></script>
+{% extends "core/base.html" %}
+
+{% block title %}音符精灵{% endblock %}
+
+{% block content %}
+<div class="spirits-container">
+    <h2>音符精灵互动</h2>
+    
+    <div class="spirits-area">
+        <div class="spirit" data-note="do" style="background-color: #ff6b6b;">Do</div>
+        <div class="spirit" data-note="mi" style="background-color: #48dbfb;">Mi</div>
+        <div class="spirit" data-note="fa" style="background-color: #1dd1a1;">Fa</div>
+    </div>
+    
+    <div class="track-area" id="music-track">
+        <p>将音符拖到这里创建旋律</p>
+    </div>
+    
+    <div class="melody-controls">
+        <button id="play-melody" class="btn btn-play">▶ 播放旋律</button>
+        <button id="save-melody" class="btn btn-save">💾 保存旋律</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/spirits.js"></script>
+{% endblock %}
